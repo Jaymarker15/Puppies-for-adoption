@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppies for Adoption</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🐶 Find Your Furry Friend! 🐾</h1>
+    </header>
+    
+    <section class="gallery">
+        <div class="puppy-card">
+            <img src="puppy1.jpg" alt="Adorable Puppy">
+            <h2>Bella</h2>
+            <button class="adopt-btn">Adopt Me</button>
+        </div>
+        <div class="puppy-card">
+            <img src="puppy2.jpg" alt="Cute Puppy">
+            <h2>Max</h2>
+            <button class="adopt-btn">Adopt Me</button>
+        </div>
+        <div class="puppy-card">
+            <img src="puppy3.jpg" alt="Fluffy Puppy">
+            <h2>Luna</h2>
+            <button class="adopt-btn">Adopt Me</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Puppy Adoption Center</p>
+    </footer>
+</body>
+</html>
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #ffcccb;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #ff6f61;
+    padding: 20px;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.puppy-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    margin: 15px;
+    padding: 15px;
+    width: 250px;
+}
+
+.puppy-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.adopt-btn {
+    background: #ff6f61;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.adopt-btn:hover {
+    background: #ff4433;
+}
+
+footer {
+    margin-top: 20px;
+    background: #ff6f61;
+    color: white;
+    padding: 10px;
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".adopt-btn");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", (event) => {
+            let puppyName = event.target.previousElementSibling.innerText;
+            alert(`Thank you for choosing to adopt ${puppyName}!`);
+        });
+    });
+});
+
