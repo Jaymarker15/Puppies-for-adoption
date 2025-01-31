@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppies for Adoption</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fce4ec; }
+        .container { display: flex; max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        .filter-section { width: 200px; padding-right: 20px; }
+        .puppy-list { flex-grow: 1; }
+        .puppy { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 10px; }
+        img { width: 80px; height: 80px; border-radius: 50%; }
+        header { text-align: center; padding: 20px; background-color: #ffcdd2; }
+        footer { text-align: center; padding: 10px; background-color: #ffcdd2; margin-top: 20px; }
+        .gallery { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .puppy-card { text-align: center; border: 1px solid #ddd; padding: 10px; border-radius: 10px; background-color: #fff; }
+        .adopt-btn { background-color: #ff4081; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🐶 Find Your Furry Friend! 🐾</h1>
+    </header>
+
+    <div class="container">
+        <div class="filter-section">
+            <h3>Filters</h3>
+            <label>Breed:</label>
+            <select id="breedFilter">
+                <option value="">All</option>
+                <option value="Labrador">Labrador</option>
+                <option value="Beagle">Beagle</option>
+                <option value="Poodle">Poodle</option>
+            </select>
+            <br>
+            <label>Size:</label>
+            <select id="sizeFilter">
+                <option value="">All</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+            <br>
+            <button onclick="filterPuppies()">Filter</button>
+        </div>
+        
+        <div class="puppy-list" id="puppyList">
+            <div class="puppy-card" data-breed="Labrador" data-size="Large">
+                <img src="labrador.jpg" alt="Labrador">
+                <h2>Bella</h2>
+                <button class="adopt-btn">Adopt Me</button>
+            </div>
+            <div class="puppy-card" data-breed="Beagle" data-size="Medium">
+                <img src="beagle.jpg" alt="Beagle">
+                <h2>Max</h2>
+                <button class="adopt-btn">Adopt Me</button>
+            </div>
+            <div class="puppy-card" data-breed="Poodle" data-size="Small">
+                <img src="poodle.jpg" alt="Poodle">
+                <h2>Luna</h2>
+                <button class="adopt-btn">Adopt Me</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Puppy Adoption Center</p>
+    </footer>
+
+    <script>
+        function filterPuppies() {
+            let breed = document.getElementById("breedFilter").value;
+            let size = document.getElementById("sizeFilter").value;
+            let puppies = document.querySelectorAll(".puppy-card");
+            
+            puppies.forEach(puppy => {
+                let matchesBreed = breed === "" || puppy.dataset.breed === breed;
+                let matchesSize = size === "" || puppy.dataset.size === size;
+                
+                if (matchesBreed && matchesSize) {
+                    puppy.style.display = "block";
+                } else {
+                    puppy.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
